@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuerdos 🥺💚</title>
+    <title>recuerdo🥺</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,57 +23,239 @@
             --text-shadow: 3px 3px 8px rgba(233, 30, 99, 0.5);
         }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; -webkit-user-select: none; }
-        html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'Poppins', sans-serif; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        html, body {
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
         
         #lock-screen {
-            width: 100%; height: 100%; position: relative;
-            background: var(--bg-gradient); background-size: 400% 400%;
+            width: 100%; 
+            height: 100%; 
+            position: relative;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
             animation: gradientFlow 15s ease infinite;
-            display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 20px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            flex-direction: column;
+            padding: 20px;
         }
         
-        @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         
-        .title-container { position: absolute; top: 10%; text-align: center; z-index: 3; }
-        .title-container h1 { font-family: 'Sour Gummy', cursive; font-size: 2.3rem; color: var(--primary-pink); text-shadow: var(--text-shadow); }
-        .password-hint { position: absolute; bottom: 5%; z-index: 2; font-family: 'Sour Gummy', cursive; font-size: 1.2rem; color: var(--dark-pink); }
+        .title-container {
+            position: absolute;
+            top: 10%;
+            text-align: center;
+            z-index: 3;
+        }
         
-        #lock-image { width: 80%; max-width: 400px; z-index: 1; filter: drop-shadow(0 12px 24px rgba(233, 30, 99, 0.45)); }
+        .title-container h1 {
+            font-family: 'Sour Gummy', cursive;
+            font-size: 2.3rem;
+            color: var(--primary-pink);
+            text-shadow: var(--text-shadow);
+            margin-bottom: 8px;
+        }
         
-        .password-container { position: absolute; bottom: 30%; display: flex; justify-content: center; gap: 8px; z-index: 2; transform: scale(1.3); }
-        .digit-container { display: flex; flex-direction: column; align-items: center; background: rgba(255, 255, 255, 0.45); border-radius: 20px; padding: 8px 6px; border: 2px solid var(--secondary-pink); backdrop-filter: blur(10px); }
-        .digit-btn { background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink)); color: var(--white); border: none; width: 24px; height: 24px; cursor: pointer; border-radius: 50%; font-weight: bold; }
-        .digit-display { background: var(--white); border: 2px solid var(--primary-pink); display: flex; justify-content: center; align-items: center; font-size: 1.2rem; border-radius: 8px; color: var(--primary-pink); font-weight: 700; min-width: 38px; height: 32px; margin: 5px 0; }
+        .password-hint {
+            position: absolute;
+            bottom: 5%;
+            z-index: 2; 
+            font-family: 'Sour Gummy', cursive;
+            font-size: 1.2rem;
+            color: var(--dark-pink);
+        }
+        
+        #lock-image {
+            width: 80%; 
+            max-width: 400px;
+            z-index: 1; 
+            filter: drop-shadow(0 12px 24px rgba(233, 30, 99, 0.45));
+        }
+        
+        .password-container {
+            position: absolute; 
+            bottom: 30%; 
+            display: flex; 
+            justify-content: center; 
+            gap: 8px; 
+            z-index: 2;
+            transform: scale(1.3);
+        }
+        
+        .digit-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.45);
+            border-radius: 20px;
+            padding: 8px 6px;
+            border: 2px solid var(--secondary-pink);
+            backdrop-filter: blur(10px);
+        }
+        
+        .digit-btn {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: var(--white);
+            border: none; 
+            width: 24px; 
+            height: 24px; 
+            cursor: pointer;
+            border-radius: 50%; 
+            font-weight: bold;
+        }
+        
+        .digit-display {
+            background: var(--white);
+            border: 2px solid var(--primary-pink);
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            font-size: 1.2rem;
+            border-radius: 8px; 
+            color: var(--primary-pink);
+            font-weight: 700;
+            min-width: 38px;
+            height: 32px;
+            margin: 5px 0;
+        }
 
         #memories-page {
-            display: none; width: 100%; height: 100%; overflow-y: auto;
-            background: var(--bg-gradient); background-size: 400% 400%;
-            animation: gradientFlow 20s ease infinite; flex-direction: column; align-items: center; padding: 20px;
+            display: none; 
+            width: 100%; 
+            height: 100%; 
+            overflow-y: auto;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            flex-direction: column; 
+            align-items: center; 
+            padding: 20px;
         }
         
-        .modal-container { width: 100%; max-width: 900px; margin: 20px 0; background: var(--carousel-bg-gradient); padding: 40px; border-radius: 35px; box-shadow: 0 15px 40px var(--shadow-medium); border: 2px solid rgba(233, 30, 99, 0.2); }
-        .main-title { font-family: 'Sour Gummy', cursive; font-size: 3.5rem; color: #4a2d5f; text-align: center; margin: 20px 0; text-shadow: 4px 4px 0px var(--secondary-pink); }
-        .modal-body { perspective: 1200px; height: 400px; position: relative; }
-        .carousel-container-3d { width: 100%; height: 100%; transform-style: preserve-3d; }
-        .carousel-3d { position: absolute; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .carousel-item-3d { position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; width: 220px; height: 300px; border-radius: 20px; overflow: hidden; box-shadow: 0 0 45px 5px rgba(244, 143, 177, 0.7); border: 3px solid var(--white); }
-        .carousel-item-3d img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-container {
+            width: 100%; 
+            max-width: 900px; 
+            margin: 20px 0;
+            background: var(--carousel-bg-gradient);
+            padding: 40px; 
+            border-radius: 35px;
+            box-shadow: 0 15px 40px var(--shadow-medium);
+            border: 2px solid rgba(233, 30, 99, 0.2);
+        }
         
-        #time-counter { text-align: center; margin: 40px 0; }
-        #time-counter h2 { font-family: 'Sour Gummy', cursive; font-size: 3.5rem; color: var(--primary-pink); }
-        .time-boxes { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; background: rgba(255,255,255,0.8); padding: 20px; border-radius: 50px; }
+        .main-title {
+            font-family: 'Sour Gummy', cursive;
+            font-size: 3.5rem;
+            color: #4a2d5f;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 4px 4px 0px var(--secondary-pink);
+        }
+        
+        .modal-body { 
+            perspective: 1200px; 
+            height: 400px; 
+            position: relative;
+        }
+        
+        .carousel-container-3d { 
+            width: 100%; 
+            height: 100%; 
+            transform-style: preserve-3d;
+            cursor: grab;
+        }
+        
+        .carousel-3d {
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .carousel-item-3d {
+            position: absolute; 
+            top: 0; left: 0; right: 0; bottom: 0; margin: auto;
+            width: 220px; height: 300px;
+            border-radius: 20px;
+            overflow: hidden; 
+            box-shadow: 0 0 45px 5px rgba(244, 143, 177, 0.7);
+            border: 3px solid var(--white);
+        }
+        
+        .carousel-item-3d img { 
+            width: 100%; height: 100%; object-fit: cover; 
+        }
+        
+        #time-counter {
+            text-align: center; margin: 40px 0; 
+        }
+        
+        #time-counter h2 {
+            font-family: 'Sour Gummy', cursive; font-size: 3.5rem; color: var(--primary-pink);
+        }
+        
+        .time-boxes {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+            background: rgba(255,255,255,0.8); padding: 20px; border-radius: 50px;
+        }
+        
         .time-box span { font-size: 2.5rem; font-weight: bold; color: var(--primary-pink); display: block; }
-        #center-image { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; margin: 20px 0; box-shadow: 0 10px 30px var(--shadow-strong); }
-        .love-phrase { position: fixed; font-family: 'Comic Relief', cursive; font-size: 1.5rem; color: #ff4081; text-shadow: 0 0 10px white; pointer-events: none; z-index: 1000; animation: fadeOut 3s forwards; }
-        @keyframes fadeOut { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-50px); } }
+        
+        #center-image {
+            width: 250px; height: 250px; border-radius: 50%; object-fit: cover;
+            margin: 20px 0; box-shadow: 0 10px 30px var(--shadow-strong);
+        }
+
+        #love-letter {
+            display: none; background: white; padding: 40px; border-radius: 30px;
+            font-family: 'Comic Relief', cursive; font-size: 1.3rem; line-height: 1.6;
+            max-width: 600px; margin: 20px auto; border: 2px solid var(--secondary-pink);
+        }
+
+        .love-phrase {
+            position: fixed; font-family: 'Comic Relief', cursive; font-size: 1.5rem;
+            color: #ff4081; text-shadow: 0 0 10px white; pointer-events: none;
+            z-index: 1000; animation: fadeOut 3s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-50px); }
+        }
+
+        @media (max-width: 600px) {
+            .password-container { transform: scale(1.1); }
+            .main-title { font-size: 2.5rem; }
+            .carousel-item-3d { width: 160px; height: 220px; }
+        }
     </style>
 </head>
 <body>
     <div id="lock-screen">
-        <div class="title-container"><h1>Ingresa nuestra fecha...</h1></div>
+        <div class="title-container">
+            <h1>Ingresa fecha de despedirnos...</h1>
+        </div>
         <img id="lock-image" src="https://dl.dropboxusercontent.com/scl/fi/f4n3udgmqe8fav15cll5h/lock1.png?rlkey=rc8hijxh0ahkumnf3iupmjlj4" alt="Lock">
-        <p class="password-hint">Pista: (El día que  nos vimos por última vez)</p>
+        <p class="password-hint">Pista: (El día que nos vimos oor última vez)</p>
+        
         <div class="password-container">
             <div class="digit-container">
                 <button class="digit-btn" onclick="changeValue('day', 1)">▲</button>
@@ -99,18 +281,19 @@
             <div class="modal-body">
                 <div class="carousel-container-3d" id="carouselContainer">
                     <div class="carousel-3d" id="imageCarousel">
-                        <div class="carousel-item-3d"><img src="IMG-20260402-WA0147.jpg"></div>
-                        <div class="carousel-item-3d"><img src="IMG-20260402-WA0151.jpg"></div>
                         <div class="carousel-item-3d"><img src="IMG-20260404-WA0102.jpg"></div>
                         <div class="carousel-item-3d"><img src="IMG_20260402_181758_734.jpg"></div>
                         <div class="carousel-item-3d"><img src="IMG_20260405_124208_110.jpg"></div>
+                        <div class="carousel-item-3d"><img src="IMG-20260402-WA0147.jpg"></div>
+                        <div class="carousel-item-3d"><img src="IMG-20260402-WA0151.jpg"></div>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div id="time-counter">
             <h2>Nuestro Tiempo</h2>
-            <img id="center-image" src="IMG_20260405_124209_737.jpg">
+            <img id="center-image" src="https://www.marthadebayle.com/wp-content/uploads/2025/01/parejas-de-fin-de-semana-que-son.jpg">
             <div class="time-boxes">
                 <div class="time-box"><span id="years">0</span><label>Años</label></div>
                 <div class="time-box"><span id="months">0</span><label>Meses</label></div>
@@ -119,6 +302,12 @@
                 <div class="time-box"><span id="seconds">0</span><label>Segs</label></div>
             </div>
         </div>
+
+        <button onclick="document.getElementById('love-letter').style.display='block'" style="padding: 15px 30px; border-radius: 30px; border: none; background: var(--primary-pink); color: white; cursor: pointer; font-family: 'Sour Gummy'; font-size: 1.2rem;">Leer Carta</button>
+        
+        <div id="love-letter">
+            Mi amor,  eres el amor de ki vida, cada día contigo es mucho mas especial, Eres mi sol en los días grises y mi refugio. Gracias por ser mi todo, hoy y siempre. 🫶🏻
+        </div>
     </div>
 
     <audio id="background-audio" loop>
@@ -126,7 +315,7 @@
     </audio>
 
     <script>
-        const correctPassword = { day: 5, month: 4, year: 26 };
+        const correctDate = { day: 5, month: 4, year: 26 };
         let currentInput = { day: 1, month: 1, year: 25 };
 
         function changeValue(type, delta) {
@@ -138,7 +327,7 @@
             document.getElementById('month-display').innerText = currentInput.month.toString().padStart(2, '0');
             document.getElementById('year-display').innerText = currentInput.year.toString().padStart(2, '0');
             
-            if(currentInput.day === correctPassword.day && currentInput.month === correctPassword.month && currentInput.year === correctPassword.year) {
+            if(currentInput.day === correctDate.day && currentInput.month === correctDate.month && currentInput.year === correctDate.year) {
                 unlock();
             }
         }
@@ -146,11 +335,9 @@
         function unlock() {
             document.getElementById('lock-screen').style.display = 'none';
             document.getElementById('memories-page').style.display = 'flex';
-            const audio = document.getElementById('background-audio');
-            if (audio) audio.play();
+            document.getElementById('background-audio').play();
             initCarousel();
             setInterval(updateTimer, 1000);
-            updateTimer();
         }
 
         function initCarousel() {
@@ -160,19 +347,22 @@
             items.forEach((item, i) => {
                 item.style.transform = `rotateY(${i * angle}deg) translateZ(250px)`;
             });
+            
             let rotation = 0;
-            setInterval(() => { rotation -= 0.5; carousel.style.transform = `rotateY(${rotation}deg)`; }, 30);
+            setInterval(() => {
+                rotation -= 0.5;
+                carousel.style.transform = `rotateY(${rotation}deg)`;
+            }, 30);
         }
 
         function updateTimer() {
-            // 18 es Agosto para JavaScript
-            const start = new Date(2025, 8, 18); 
+            const start = new Date(2026,8,18); // 18 de agosto de 2026
             const now = new Date();
             const diff = now - start;
             
-            document.getElementById('years').innerText = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-            document.getElementById('months').innerText = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
-            document.getElementById('days').innerText = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+            document.getElementById('years').innerText = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            document.getElementById('months').innerText = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            document.getElementById('days').innerText = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
             document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
         }
@@ -180,7 +370,7 @@
         document.getElementById('memories-page').addEventListener('click', (e) => {
             const phrase = document.createElement('div');
             phrase.className = 'love-phrase';
-            phrase.innerText = "🥺 Te Amo 🥺";
+            phrase.innerText = "🎀 Te Amo 🎀";
             phrase.style.left = e.clientX + 'px';
             phrase.style.top = e.clientY + 'px';
             document.body.appendChild(phrase);
