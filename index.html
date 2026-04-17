@@ -1,174 +1,381 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>amor💚</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuerdos 🥺💚</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy&family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fff5f8 0%, #ffe8f1 25%, #ffd6ea 50%, #ffc4dd 75%, #ffb3d1 100%);
+            --carousel-bg-gradient: linear-gradient(135deg, #3d013b 0%, #5f2d57 50%, #6e0259 100%);
+            --primary-pink: #e91e63;
+            --secondary-pink: #f48fb1;
+            --light-pink: #fce4ec;
+            --dark-pink: #ad1457;
+            --white: #ffffff;
+            --shadow-light: rgba(233, 30, 99, 0.15);
+            --shadow-medium: rgba(233, 30, 99, 0.2);
+            --shadow-strong: rgba(233, 30, 99, 0.4);
+            --text-shadow: 3px 3px 8px rgba(233, 30, 99, 0.5);
+        }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        html, body {
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        #lock-screen {
+            width: 100%; 
+            height: 100%; 
+            position: relative;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .title-container {
+            position: absolute;
+            top: 10%;
+            text-align: center;
+            z-index: 3;
+        }
+        
+        .title-container h1 {
+            font-family: 'Sour Gummy', cursive;
+            font-size: 2.3rem;
+            color: var(--primary-pink);
+            text-shadow: var(--text-shadow);
+            margin-bottom: 8px;
+        }
+        
+        .password-hint {
+            position: absolute;
+            bottom: 5%;
+            z-index: 2; 
+            font-family: 'Sour Gummy', cursive;
+            font-size: 1.2rem;
+            color: var(--dark-pink);
+        }
+        
+        #lock-image {
+            width: 80%; 
+            max-width: 400px;
+            z-index: 1; 
+            filter: drop-shadow(0 12px 24px rgba(233, 30, 99, 0.45));
+        }
+        
+        .password-container {
+            position: absolute; 
+            bottom: 30%; 
+            display: flex; 
+            justify-content: center; 
+            gap: 8px; 
+            z-index: 2;
+            transform: scale(1.3);
+        }
+        
+        .digit-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.45);
+            border-radius: 20px;
+            padding: 8px 6px;
+            border: 2px solid var(--secondary-pink);
+            backdrop-filter: blur(10px);
+        }
+        
+        .digit-btn {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: var(--white);
+            border: none; 
+            width: 24px; 
+            height: 24px; 
+            cursor: pointer;
+            border-radius: 50%; 
+            font-weight: bold;
+        }
+        
+        .digit-display {
+            background: var(--white);
+            border: 2px solid var(--primary-pink);
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            font-size: 1.2rem;
+            border-radius: 8px; 
+            color: var(--primary-pink);
+            font-weight: 700;
+            min-width: 38px;
+            height: 32px;
+            margin: 5px 0;
+        }
 
-<style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #ec456f, #1b0209);
-    overflow: hidden;
-}
+        #memories-page {
+            display: none; 
+            width: 100%; 
+            height: 100%; 
+            overflow-y: auto;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            flex-direction: column; 
+            align-items: center; 
+            padding: 20px;
+        }
+        
+        .modal-container {
+            width: 100%; 
+            max-width: 900px; 
+            margin: 20px 0;
+            background: var(--carousel-bg-gradient);
+            padding: 40px; 
+            border-radius: 35px;
+            box-shadow: 0 15px 40px var(--shadow-medium);
+            border: 2px solid rgba(233, 30, 99, 0.2);
+        }
+        
+        .main-title {
+            font-family: 'Sour Gummy', cursive;
+            font-size: 3.5rem;
+            color: #4a2d5f;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 4px 4px 0px var(--secondary-pink);
+        }
+        
+        .modal-body { 
+            perspective: 1200px; 
+            height: 400px; 
+            position: relative;
+        }
+        
+        .carousel-container-3d { 
+            width: 100%; 
+            height: 100%; 
+            transform-style: preserve-3d;
+            cursor: grab;
+        }
+        
+        .carousel-3d {
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .carousel-item-3d {
+            position: absolute; 
+            top: 0; left: 0; right: 0; bottom: 0; margin: auto;
+            width: 220px; height: 300px;
+            border-radius: 20px;
+            overflow: hidden; 
+            box-shadow: 0 0 45px 5px rgba(244, 143, 177, 0.7);
+            border: 3px solid var(--white);
+        }
+        
+        .carousel-item-3d img { 
+            width: 100%; height: 100%; object-fit: cover; 
+        }
+        
+        #time-counter {
+            text-align: center; margin: 40px 0; 
+        }
+        
+        #time-counter h2 {
+            font-family: 'Sour Gummy', cursive; font-size: 3.5rem; color: var(--primary-pink);
+        }
+        
+        .time-boxes {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+            background: rgba(255,255,255,0.8); padding: 20px; border-radius: 50px;
+        }
+        
+        .time-box span { font-size: 2.5rem; font-weight: bold; color: var(--primary-pink); display: block; }
+        
+        #center-image {
+            width: 250px; height: 250px; border-radius: 50%; object-fit: cover;
+            margin: 20px 0; box-shadow: 0 10px 30px var(--shadow-strong);
+        }
 
-/* PANTALLAS */
-.screen {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+        #love-letter {
+            display: none; background: white; padding: 40px; border-radius: 30px;
+            font-family: 'Comic Relief', cursive; font-size: 1.3rem; line-height: 1.6;
+            max-width: 600px; margin: 20px auto; border: 2px solid var(--secondary-pink);
+        }
 
-/* OCULTAR */
-.hidden {
-    display: none;
-}
+        .love-phrase {
+            position: fixed; font-family: 'Comic Relief', cursive; font-size: 1.5rem;
+            color: #ff4081; text-shadow: 0 0 10px white; pointer-events: none;
+            z-index: 1000; animation: fadeOut 3s forwards;
+        }
 
-/* Imagen conejito */
-img {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    filter: drop-shadow(4px 8px 9px #620303);
-    cursor: pointer;
-    transition: transform 0.3s;
-}
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-50px); }
+        }
 
-img:hover {
-    transform: scale(1.1);
-}
-
-/* Texto de instrucción */
-.mensaje {
-    margin-top: 20px;
-    font-size: 22px;
-    color: #a10d0d;
-    font-weight: bold;
-    animation: latido 1s infinite;
-}
-
-@keyframes latido {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-/* VIDEO */
-.video-container {
-    width: 90%;
-    max-width: 560px;
-    aspect-ratio: 16/9;
-    margin-top: 20px;
-}
-
-.video-container iframe {
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-}
-
-/* CONTENEDOR DE TEXTO */
-#dedication-text {
-    width: 90%;
-    max-width: 500px;
-    margin-top: 20px;
-    background-color: rgba(255, 182, 193, 0.95);
-    padding: 20px;
-    border-radius: 15px;
-    color: #d90d0d;
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
-    white-space: pre-wrap;
-}
-
-/* ANIMACIÓN CORAZONES */
-@keyframes float {
-    to {
-        transform: translateY(-100vh);
-        opacity: 0;
-    }
-}
-</style>
-
+        @media (max-width: 600px) {
+            .password-container { transform: scale(1.1); }
+            .main-title { font-size: 2.5rem; }
+            .carousel-item-3d { width: 160px; height: 220px; }
+        }
+    </style>
 </head>
-
 <body>
+    <div id="lock-screen">
+        <div class="title-container">
+            <h1>Ingresa la fecha secreta...</h1>
+        </div>
+        <img id="lock-image" src="https://dl.dropboxusercontent.com/scl/fi/f4n3udgmqe8fav15cll5h/lock1.png?rlkey=rc8hijxh0ahkumnf3iupmjlj4" alt="Lock">
+        <p class="password-hint">Pista: El día que nos vimos oor última vez (05/04/26)</p>
+        
+        <div class="password-container">
+            <div class="digit-container">
+                <button class="digit-btn" onclick="changeValue('day', 1)">▲</button>
+                <div class="digit-display" id="day-display">01</div>
+                <button class="digit-btn" onclick="changeValue('day', -1)">▼</button>
+            </div>
+            <div class="digit-container">
+                <button class="digit-btn" onclick="changeValue('month', 1)">▲</button>
+                <div class="digit-display" id="month-display">01</div>
+                <button class="digit-btn" onclick="changeValue('month', -1)">▼</button>
+            </div>
+            <div class="digit-container">
+                <button class="digit-btn" onclick="changeValue('year', 1)">▲</button>
+                <div class="digit-display" id="year-display">25</div>
+                <button class="digit-btn" onclick="changeValue('year', -1)">▼</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="memories-page">
+        <h1 class="main-title">Desde aquel día... 💚</h1>
+        <div class="modal-container">
+            <div class="modal-body">
+                <div class="carousel-container-3d" id="carouselContainer">
+                    <div class="carousel-3d" id="imageCarousel">
+                        <div class="carousel-item-3d"><img src="https://images.pexels.com/photos/1378723/pexels-photo-1378723.jpeg?auto=compress&cs=tinysrgb&w=500"></div>
+                        <div class="carousel-item-3d"><img src="https://i.pinimg.com/736x/73/43/18/73431815fe05ca97a572ee01a9908086.jpg"></div>
+                        <div class="carousel-item-3d"><img src="https://i.pinimg.com/236x/59/53/e6/5953e692aa83bff93192fa45921a7bdc.jpg"></div>
+                        <div class="carousel-item-3d"><img src="https://i.pinimg.com/236x/b2/ce/44/b2ce441d8c3fd8734543a226422db9a6.jpg"></div>
+                        <div class="carousel-item-3d"><img src="https://images.unsplash.com/photo-1710875446583-057044aa5aea?w=500"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="time-counter">
+            <h2>Nuestro Tiempo</h2>
+            <img id="center-image" src="https://www.marthadebayle.com/wp-content/uploads/2025/01/parejas-de-fin-de-semana-que-son.jpg">
+            <div class="time-boxes">
+                <div class="time-box"><span id="years">0</span><label>Años</label></div>
+                <div class="time-box"><span id="months">0</span><label>Meses</label></div>
+                <div class="time-box"><span id="days">0</span><label>Días</label></div>
+                <div class="time-box"><span id="hours">0</span><label>Horas</label></div>
+                <div class="time-box"><span id="seconds">0</span><label>Segs</label></div>
+            </div>
+        </div>
 
-<div id="pantalla1" class="screen">
-    <img src="https://img.freepik.com/fotos-premium/ilustracion-kawaii-conejos-lindos_1158260-7633.jpg" onclick="cambiarPantalla()">
-    <div class="mensaje">🎀 tócame para ver algo especial 🎀</div>
-</div>
-
-<div id="pantalla2" class="screen hidden">
-
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/IkcuShU9_nk" allowfullscreen></iframe>
+        <button onclick="document.getElementById('love-letter').style.display='block'" style="padding: 15px 30px; border-radius: 30px; border: none; background: var(--primary-pink); color: white; cursor: pointer; font-family: 'Sour Gummy'; font-size: 1.2rem;">Leer Carta</button>
+        
+        <div id="love-letter">
+            Mi amor,  Eres mi sol en los días grises y mi refugio. Gracias por ser mi todo, hoy y siempre. 🫶🏻
+        </div>
     </div>
 
-    <div id="dedication-text"></div>
+    <audio id="background-audio" loop>
+        <source src="https://dl.dropboxusercontent.com/scl/fi/hg6roken3ayu872ys4kb3/those-eyes.mp3?rlkey=jh3jiogogel949j4udiv928q3&raw=1" type="audio/mpeg">
+    </audio>
 
-</div>
+    <script>
+        const correctDate = { day: 2, month: 1, year: 25 };
+        let currentInput = { day: 1, month: 1, year: 25 };
 
-<script>
-// LÓGICA PARA CAMBIAR DE PANTALLA
-function cambiarPantalla() {
-    document.getElementById("pantalla1").classList.add("hidden");
-    document.getElementById("pantalla2").classList.remove("hidden");
-    escribirTexto();
-}
+        function changeValue(type, delta) {
+            if(type === 'day') currentInput.day = (currentInput.day + delta - 1 + 31) % 31 + 1;
+            if(type === 'month') currentInput.month = (currentInput.month + delta - 1 + 12) % 12 + 1;
+            if(type === 'year') currentInput.year += delta;
+            
+            document.getElementById('day-display').innerText = currentInput.day.toString().padStart(2, '0');
+            document.getElementById('month-display').innerText = currentInput.month.toString().padStart(2, '0');
+            document.getElementById('year-display').innerText = currentInput.year.toString().padStart(2, '0');
+            
+            if(currentInput.day === correctDate.day && currentInput.month === correctDate.month && currentInput.year === correctDate.year) {
+                unlock();
+            }
+        }
 
-// EFECTO DE TEXTO MECANOGRAFIADO
-function escribirTexto() {
-let text = `amor… 💕
-desde que llegaste a mi vida 🌎✨
-todo es más bonito 🌷,
-las noches brillan más 🌙⭐
-y mi corazón late solo por ti ❤️‍🔥💓
+        function unlock() {
+            document.getElementById('lock-screen').style.display = 'none';
+            document.getElementById('memories-page').style.display = 'flex';
+            document.getElementById('background-audio').play();
+            initCarousel();
+            setInterval(updateTimer, 1000);
+        }
 
-Tu sonrisa 😊 es mi la más hermosa que he visto 🏡
-tu voz 🎶 es mi canción preferida 🎧
-y tus brazos 🤗 es donde quiero quedarme siempre 🥰💞
+        function initCarousel() {
+            const carousel = document.getElementById('imageCarousel');
+            const items = document.querySelectorAll('.carousel-item-3d');
+            const angle = 360 / items.length;
+            items.forEach((item, i) => {
+                item.style.transform = `rotateY(${i * angle}deg) translateZ(250px)`;
+            });
+            
+            let rotation = 0;
+            setInterval(() => {
+                rotation -= 0.5;
+                carousel.style.transform = `rotateY(${rotation}deg)`;
+            }, 30);
+        }
 
-Te quiero hoy, mañana
-y por toda la eternidad 💞🌹✨`;
+        function updateTimer() {
+            const start = new Date(2026, 0, 5); // 5 de abril de 2026
+            const now = new Date();
+            const diff = now - start;
+            
+            document.getElementById('years').innerText = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            document.getElementById('months').innerText = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            document.getElementById('days').innerText = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+        }
 
-let i = 0;
-const container = document.getElementById("dedication-text");
-
-function type() {
-    if (i < text.length) {
-        container.textContent += text.charAt(i);
-        i++;
-        setTimeout(type, 40);
-    }
-}
-
-container.textContent = "";
-type();
-}
-
-// GENERADOR DE CORAZONES FLOTANTES
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.innerHTML = "💚";
-    heart.style.position = "fixed";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.bottom = "0";
-    heart.style.fontSize = "20px";
-    heart.style.animation = "float 4s linear";
-    heart.style.zIndex = "1000";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 4000);
-}, 500);
-</script>
-
+        document.getElementById('memories-page').addEventListener('click', (e) => {
+            const phrase = document.createElement('div');
+            phrase.className = 'love-phrase';
+            phrase.innerText = "🎀 Te Amo 🥺";
+            phrase.style.left = e.clientX + 'px';
+            phrase.style.top = e.clientY + 'px';
+            document.body.appendChild(phrase);
+            setTimeout(() => phrase.remove(), 3000);
+        });
+    </script>
 </body>
 </html>
