@@ -356,9 +356,14 @@
         }
 
         function updateTimer() {
-            const start = new Date(2025, 8, 18); // 18 de agosto de 2025
-            const now = new Date();
-            const diff = now - start;
+    // 2025 es el año, 7 es Agosto, 18 es el día
+    const start = new Date(2025, 7, 18); 
+    
+    const now = new Date();
+    const diff = now - start;
+    // ... resto del código
+                           }
+        
             
             document.getElementById('years').innerText = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
             document.getElementById('months').innerText = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
